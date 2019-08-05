@@ -4,7 +4,8 @@
   "description": "Nodejs base application structure",
   "main": "www",
   "scripts": {
-    "test": "mocha tests"
+    "test": "mocha tests",
+    "start": "node ./www"
   },
   "repository": {
     "type": "git",
