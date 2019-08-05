@@ -5,7 +5,8 @@
   "main": "www",
   "scripts": {
     "test": "mocha tests",
-    "start": "node ./www"
+    "start": "node ./www",
+    "gulp": "gulp"
   },
   "repository": {
     "type": "git",
