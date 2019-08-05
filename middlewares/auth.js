@@ -3,5 +3,5 @@ module.exports = (req, res, next) => {
 		return next();
 	}
 
-	return res.redirect(__config.authRedirectTo);
+	return res.redirect(__config.auth.redirectTo);
 };

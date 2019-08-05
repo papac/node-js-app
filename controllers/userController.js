@@ -1,3 +1,5 @@
+const BaseController = require("./baseController");
+
 class UserController extends BaseController {
 	/**
 	 * Show the get started message
@@ -11,9 +13,10 @@ class UserController extends BaseController {
 	}
 }
 
-// Optimise class loader
+// Optimize class loader
 let instance;
-if (!typeof instance instanceof UserController) {
+
+if (!(typeof instance instanceof UserController)) {
 	instance = new UserController;
 }
 
