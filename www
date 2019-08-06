@@ -42,6 +42,15 @@ process.on('SIGTERM', (err) => {
   })
 });
 
+// Error listener
+server.on('error', (err) => {
+  switch (err.errno) {
+    case 'EADDRINUSE':
+      debug(`The port ${err.port} is already use`);
+      break;
+  }
+})
+
 // Launch the application server
 server
 	.listen(__config.port, () => {
