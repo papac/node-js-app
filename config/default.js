@@ -11,7 +11,8 @@ const config = {
   port: process.env.APP_PORT,
   view: view,
   certificate: certificate,
-  session: session
+  session: session,
+  mongodb: process.env.MONGO_URL
 };
 
 // Base application configuration

@@ -1,7 +1,6 @@
 require('custom-env').env(true);
 
 let app = require('./app');
-let debug = require("debug")("app");
 let server;
 
 if (__config.withHttps) {
@@ -23,13 +22,13 @@ if (__config.withHttps) {
 // We catch the error exception throw in
 // application
 process.on('uncaughtException', (err) => {
-  debug(err.message);
+  __debug(err.message);
 });
 
 // We catch the rejection exception cause by promise
 // which is deprecated the other nodejs version
 process.on('unhandledRejection', (err) => {
-  debug(err.message);
+  __debug(err.message);
 });
 
 // We listen SIGTERM process signal
@@ -37,7 +36,7 @@ process.on('SIGTERM', (err) => {
   console.info('server shutdown at', new Date().toISOString());
   server.close((err) => {
     if (err) {
-      debug(err.message);
+      __debug(err.message);
       process.exit(1);
     }
   })
@@ -47,7 +46,7 @@ process.on('SIGTERM', (err) => {
 server.on('error', (err) => {
   switch (err.errno) {
     case 'EADDRINUSE':
-      debug(`The port ${err.port} is already use`);
+      __debug(`The port ${err.port} is already use`);
       break;
   }
 })
@@ -55,5 +54,5 @@ server.on('error', (err) => {
 // Launch the application server
 server
 	.listen(__config.port, () => {
-    debug(`Server start at ${__config.url}`);
+    __debug(`Server start at ${__config.url}`);
   });

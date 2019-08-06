@@ -12,25 +12,6 @@ class UserController extends BaseController {
 	index(req, res) {
 		res.render("app");
 	}
-
-  /**
-   * Create the new user
-   * 
-   * @param  {Object} req The server request
-   * @param  {Object} res The server response
-   * @return {*}
-   */
-  async create(req, res) {
-    // This the test. It not work great.
-    let user = new User({
-      name: req.body.name,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      password: req.body.password
-    });
-
-    let response = await user.save();
-  }
 }
 
 // Optimize class loader

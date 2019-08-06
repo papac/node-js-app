@@ -1,7 +1,17 @@
 // Optimisation of configuration loader
 global.__config = require('config');
 global.__helper = require('./helpers');
+global.__debug = require("debug")("app");
 global.__ = require('i18n');
+
+// MongoDB configuration
+// const mongoose = require('mongoose');
+// mongoose.connect(__config.mongodb, {useNewUrlParser: true}, (err) => {
+//   if (err) {
+//     throw err;
+//   }
+//   __debug('MongoDB Connected');
+// });
 
 // See: https://www.npmjs.com/package/i18n
 __.configure({
