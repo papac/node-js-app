@@ -16,8 +16,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set("view engine", __config.view.engine);
 app.set("views", __config.view.directory);
 
-app.use();
-
 // Load application route
 glob("./routes/*.js", function (er, files) {
   files.forEach(file => {
