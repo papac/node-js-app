@@ -1,4 +1,5 @@
 require('custom-env').env(true);
+
 let app = require('./app');
 let debug = require("debug")("app");
 let server;
