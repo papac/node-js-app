@@ -1,5 +1,6 @@
 // Optimisation of configuration loader
 global.__config = require('config');
+global.__helper = require('./helpers');
 
 const glob = require("glob");
 const app = require('express')();
@@ -19,7 +20,12 @@ app.set("view engine", __config.view.engine);
 app.set("views", __config.view.directory);
 
 // Load application route
-glob("./routes/*.js", function (er, files) {
+glob("./routes/*.js", (error, files) => {
+  if (error) {
+    throw error;
+  }
+
+  // We load the application route
   files.forEach(file => {
     app.use(require(file));
   });
