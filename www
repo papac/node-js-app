@@ -1,13 +1,14 @@
 require('custom-env').env(true);
 let app = require('./app');
+let debug = require("debug")("http");
 let server;
 
 if (process.env.APP_HTTPS) {
   const https = require('https');
   const fs = require('fs');
   const options = {
-    key: fs.readFileSync(__config.certificate.key),
-    cert: fs.readFileSync(__config.certificate.cert)
+    // key: fs.readFileSync(__config.certificate.key),
+    // cert: fs.readFileSync(__config.certificate.cert)
   };
 
   // We create the server
@@ -23,12 +24,14 @@ if (process.env.APP_HTTPS) {
 // application
 process.on('uncaughtException', (err) => {
   console.error(err);
+  debug(err.message);
 });
 
 // We catch the rejection exception cause by promise
 // which is deprecated the other nodejs version
 process.on('unhandledRejection', (err) => {
   console.error(err);
+  debug(err.message);
 });
 
 // We listen SIGTERM process signal
@@ -36,13 +39,15 @@ process.on('SIGTERM', (err) => {
   console.info('server shutdown at', new Date().toISOString());
   server.close((err) => {
     if (err) {
-      console.error(err)
-      process.exit(1)
+      console.error(err);
+      process.exit(1);
     }
   })
 });
 
+// Launch the application server
 server
 	.listen(__config.port, () => {
-    console.log(`APP Start at ${__config.port}`);
+    console.log(`App start at ${__config.url}`);
+    debug(`App start at ${__config.url}`);
   });

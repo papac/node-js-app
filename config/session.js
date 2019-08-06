@@ -7,7 +7,6 @@ module.exports = {
     domain: process.env.SESSION_DOMAIN,
     secure: process.env.SESSION_SECURE,
     maxAge: process.env.SESSION_DURATION,
-    path: "/",
     httpOnly: process.env.SESSION_HTTP_ONLY
   }
 }

@@ -7,10 +7,12 @@ const app = require('express')();
 // We load the request parse
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session(__config.session));
 
 // Set the view engine
 app.set("view engine", __config.view.engine);
