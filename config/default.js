@@ -6,6 +6,7 @@ const session = require("./session");
 // Prevent for update
 const config = {
   url: process.env.APP_URL,
+  withHttps: process.env.APP_HTTPS == 'yes',
   auth: auth,
   port: process.env.APP_PORT,
   view: view,

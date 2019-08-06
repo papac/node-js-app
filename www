@@ -3,7 +3,7 @@ let app = require('./app');
 let debug = require("debug")("http");
 let server;
 
-if (process.env.APP_HTTPS) {
+if (__config.withHttps) {
   const https = require('https');
   const fs = require('fs');
   const options = {
@@ -15,7 +15,6 @@ if (process.env.APP_HTTPS) {
   server = https.createServer(options, app);
 } else {
   const http = require('http');
-
   // We create the server
   server = http.createServer(app)
 }
