@@ -1,6 +1,6 @@
 require('custom-env').env(true);
 let app = require('./app');
-let debug = require("debug")("http");
+let debug = require("debug")("app");
 let server;
 
 if (__config.withHttps) {
@@ -22,14 +22,12 @@ if (__config.withHttps) {
 // We catch the error exception throw in
 // application
 process.on('uncaughtException', (err) => {
-  console.error(err);
   debug(err.message);
 });
 
 // We catch the rejection exception cause by promise
 // which is deprecated the other nodejs version
 process.on('unhandledRejection', (err) => {
-  console.error(err);
   debug(err.message);
 });
 
@@ -38,7 +36,7 @@ process.on('SIGTERM', (err) => {
   console.info('server shutdown at', new Date().toISOString());
   server.close((err) => {
     if (err) {
-      console.error(err);
+      debug(err.message);
       process.exit(1);
     }
   })
@@ -47,6 +45,5 @@ process.on('SIGTERM', (err) => {
 // Launch the application server
 server
 	.listen(__config.port, () => {
-    console.log(`App start at ${__config.url}`);
-    debug(`App start at ${__config.url}`);
+    debug(`Server start at ${__config.url}`);
   });

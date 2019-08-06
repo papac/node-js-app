@@ -1,6 +1,14 @@
 // Optimisation of configuration loader
 global.__config = require('config');
 global.__helper = require('./helpers');
+global.__ = require('i18n');
+
+// See: https://www.npmjs.com/package/i18n
+__.configure({
+  locales: ['en', 'fr'],
+  defaultLocale: 'fr',
+  directory: __dirname + '/frontend/lang'
+});
 
 const glob = require("glob");
 const app = require('express')();
@@ -14,6 +22,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(__config.session));
+app.use(__.init);
 
 // Set the view engine
 app.set("view engine", __config.view.engine);
