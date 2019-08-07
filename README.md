@@ -10,6 +10,7 @@ For install the new project instance you can make.
 ```bash
 git clone https://github.com/papac/node-js-app
 cd node-js-app
+cp .env.dev .env
 npm install
 npm start
 ```
