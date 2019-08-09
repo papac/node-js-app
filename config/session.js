@@ -5,9 +5,9 @@ module.exports = {
   saveUninitialized: true,
   cookie: {
     domain: process.env.SESSION_DOMAIN,
-    secure: process.env.SESSION_SECURE == 'yes',
+    secure: process.env.SESSION_SECURE === 'yes',
     maxAge: parseInt(process.env.SESSION_DURATION),
-    httpOnly: process.env.SESSION_HTTP_ONLY == 'yes',
+    httpOnly: process.env.SESSION_HTTP_ONLY === 'yes',
     originalMaxAge: parseInt(process.env.SESSION_DURATION)
   }
 }
