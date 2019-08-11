@@ -5,13 +5,13 @@ global.__debug = require("debug")("app");
 global.__ = require('i18n');
 
 // MongoDB configuration
-// const mongoose = require('mongoose');
-// mongoose.connect(__config.mongodb, {useNewUrlParser: true}, (err) => {
-//   if (err) {
-//     throw err;
-//   }
-//   __debug('MongoDB Connected');
-// });
+const mongoose = require('mongoose');
+mongoose.connect(__config.mongodb, {useNewUrlParser: true}, (err) => {
+  if (err) {
+    throw err;
+  }
+  __debug('MongoDB Connected');
+});
 
 // See: https://www.npmjs.com/package/i18n
 __.configure({
@@ -49,5 +49,8 @@ glob("./routes/*.js", (error, files) => {
     app.use(require(file));
   });
 });
+
+// We bind a 404 catcher
+app.use(require('./middlewares/404.js'));
 
 module.exports = app;

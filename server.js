@@ -39,7 +39,7 @@ process.on('SIGTERM', (err) => {
       __debug(err.message);
       process.exit(1);
     }
-  })
+  });
 });
 
 // Error listener
@@ -49,7 +49,7 @@ server.on('error', (err) => {
       __debug(`The port ${err.port} is already use`);
       break;
   }
-})
+});
 
 // Launch the application server
 server

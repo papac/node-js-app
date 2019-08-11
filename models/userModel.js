@@ -11,7 +11,7 @@ const User = new Schema({
   email: {
     type: String,
   },
-  password: {
+  description: {
     type: String,
   },
   createdAt: {
@@ -22,4 +22,10 @@ const User = new Schema({
   },
 });
 
-module.exports = new mongoose.model('User', User, 'users');
+// Optimise the class loader
+let modelClass;
+if (typeof instance === "undefined") {
+  modelClass = mongoose.model('User', User, 'users');
+}
+
+module.exports = modelClass;
