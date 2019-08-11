@@ -48,9 +48,9 @@ glob("./routes/*.js", (error, files) => {
   files.forEach(file => {
     app.use(require(file));
   });
+}).on('end', () => {
+  // We bind a 404 catcher
+  app.use(require('./middlewares/404.js'));
 });
-
-// We bind a 404 catcher
-app.use(require('./middlewares/404.js'));
 
 module.exports = app;
