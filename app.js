@@ -9,10 +9,14 @@ const path = require('path');
 
 // MongoDB configuration
 const mongoose = require('mongoose');
+<<<<<<< HEAD
 mongoose.connect(__config.mongodb, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }, (err) => {
+=======
+mongoose.connect(__config.mongodb, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
+>>>>>>> 89e3a9e... Update app.js
   if (err) {
     throw err;
   }
