@@ -22,21 +22,21 @@ if (__config.withHttps) {
 // We catch the error exception throw in
 // application
 process.on('uncaughtException', (err) => {
-  __debug(err.message);
+  __logger.error(err.message);
 });
 
 // We catch the rejection exception cause by promise
 // which is deprecated the other nodejs version
-process.on('unhandledRejection', (err) => {
-  __debug(err.message);
+process.on('unhandledRejection', (reason, promise) => {
+  __logger.error(reason);
 });
 
-// We listen SIGTERM process signal
+// We listen SIGTERM process signal for close server process gracefully
 process.on('SIGTERM', (err) => {
-  console.info('server shutdown at', new Date().toISOString());
+  __logger.info('server shutdown at', new Date().toISOString());
   server.close((err) => {
     if (err) {
-      __debug(err.message);
+      __logger.error(err.message);
       process.exit(1);
     }
   });
@@ -46,7 +46,7 @@ process.on('SIGTERM', (err) => {
 server.on('error', (err) => {
   switch (err.errno) {
     case 'EADDRINUSE':
-      __debug(`The port ${err.port} is already use`);
+      __logger.info(`The port ${err.port} is already use`);
       break;
   }
 });
@@ -54,5 +54,5 @@ server.on('error', (err) => {
 // Launch the application server
 server
 	.listen(__config.port, () => {
-    __debug(`Server start at ${__config.url}`);
+    __logger.info(`Server start at ${__config.url}`);
   });

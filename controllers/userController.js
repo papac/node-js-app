@@ -1,10 +1,11 @@
 const BaseController = require("./baseController");
 const User = require("../models/userModel");
+const UserService = require('../services/userService');
 
 class UserController extends BaseController {
   /**
    * Show the get started message
-   * 
+   *
    * @param  {Object} res
    * @param  {Object} req
    * @return {*}
@@ -15,60 +16,58 @@ class UserController extends BaseController {
 
   /**
    * Get one user
-   * 
+   *
    * @param {Object} req
    * @param {Object} res
    * @return {*}
    */
-  show(req, res) {
+  async show(req, res) {
     let { id } = req.params;
-    User.findOne({_id: id}, (err, user) => {
-      if (err) {
-        throw err;
-      }
+    let user = await UserService.findOne({_id: id});
+    res.send(user);
+  }
 
-      res.send(user);
+  /**
+   * Show all user
+   * 
+   * @param {Object} req 
+   * @param {Object} res
+   * @return {*}
+   */
+  async showAll(req, res) {
+    let users = await UserService.all();
+    res.send(users);
+  }
+
+  /**
+   * Create the new user
+   *
+   * @param {Object} req
+   * @param {Object} res
+   * @return {*}
+   */
+  async create(req, res) {
+    let user = await UserService.create(req.body);
+    res.send({
+      message: "User created",
+      user: user
     });
   }
 
   /**
    * Create the new user
-   * 
+   *
    * @param {Object} req
-   * @param {Ibject} res
+   * @param {Object} res
    * @return {*}
    */
-  create(req, res) {
-    let user = new User(req.body);
-    user.save(err => {
-      if (err) {
-        throw err;
-      }
-
-      res.send({
-        message: "User created",
-        user: user
-      });
-    });
-  }
-
-  /**
-   * Create the new user
-   * 
-   * @param {Object} req
-   * @param {Ibject} res
-   * @return {*}
-   */
-  delete(req, res) {
-    let { id } = req.params;
-    User.deleteOne({_id: id}, (err, user) => {
-      if (err) {
-        throw err;
-      }
-
-      res.send({
-        message: 'User deleted'
-      });
+  async delete(req, res) {
+    let {
+      id
+    } = req.params;
+    await User.remove(id);
+    res.send({
+      message: 'User deleted'
     });
   }
 }

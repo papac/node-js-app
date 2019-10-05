@@ -20,6 +20,12 @@ const User = new Schema({
       return Date.now()
     }
   },
+  updatedAt: {
+    type: Date,
+    default: () => {
+      return Date.now()
+    }
+  },
 });
 
 // Optimise the class loader
