@@ -17,4 +17,4 @@ module.exports = (req, res, next) => {
   }
 
   throw new Error('Error of user data validation: ' + error.message);
-}
+};

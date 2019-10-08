@@ -10,4 +10,4 @@ module.exports = {
     httpOnly: process.env.SESSION_HTTP_ONLY === 'yes',
     originalMaxAge: parseInt(process.env.SESSION_DURATION)
   }
-}
+};

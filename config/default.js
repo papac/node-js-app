@@ -8,14 +8,14 @@ const session = require("./session");
 const config = {
   env: process.env.APP_ENV,
   url: process.env.APP_URL,
-  withHttps: process.env.APP_HTTPS == 'yes',
+  withHttps: process.env.APP_HTTPS === 'yes',
   auth: auth,
   port: process.env.APP_PORT,
   view: view,
   certificate: certificate,
   session: session,
   mongodb: process.env.MONGO_URL,
-  withViewEngine: process.env.WITH_VIEW_LOADING == 'yes',
+  withViewEngine: process.env.WITH_VIEW_LOADING === 'yes',
   storage: storage,
   appName: process.env.APP_NAME
 };

@@ -8,7 +8,7 @@ const nodeUuid = require('node-uuid');
  */
 const isObject = (element) => {
   return typeof element === 'object';
-}
+};
 
 /**
  * Check if the parsed
@@ -18,7 +18,7 @@ const isObject = (element) => {
  */
 const isString = (element) => {
   return typeof element === 'string';
-}
+};
 
 /**
  * Check if the parsed
@@ -28,7 +28,7 @@ const isString = (element) => {
  */
 const isFunction = (element) => {
   return typeof element === 'function';
-}
+};
 
 /**
  * Check if the parsed
@@ -38,7 +38,7 @@ const isFunction = (element) => {
  */
 const isArray = (element) => {
   return element instanceof Array;
-}
+};
 
 /**
  * Check if the parsed
@@ -48,13 +48,13 @@ const isArray = (element) => {
  */
 const isUndefined = (element) => {
   return typeof element === 'undefined';
-}
+};
 
 /**
  * Check if the parsed
  * element is uuid format
  *
- * @param {*} element
+ * @param {*} uuid
  */
 const isUuid = (uuid) => {
   if (!isString(uuid)) {
@@ -62,7 +62,7 @@ const isUuid = (uuid) => {
   }
 
   return /([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}/.test(uuid);
-}
+};
 
 /**
  * Generate uuid
@@ -71,7 +71,7 @@ const isUuid = (uuid) => {
  */
 const uuid = () => {
   return nodeUuid.v4();
-}
+};
 
 module.exports = {
   // Put here you application helper

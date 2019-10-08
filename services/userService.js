@@ -35,7 +35,7 @@ const remove = async (id) => {
       code: 500
     };
   }
-}
+};
 
 /**
  * Get user by filter
@@ -43,6 +43,7 @@ const remove = async (id) => {
  * @param {Object} condition
  * @param {Object} projection
  * @returns {Object}
+ * @throws Error
  */
 const find = async (condition, projection = {}) => {
   try {
@@ -54,7 +55,7 @@ const find = async (condition, projection = {}) => {
   } catch (e) {
     throw e;
   }
-}
+};
 
 /**
  * Get one user by filter
@@ -73,7 +74,7 @@ const findOne = async (condition, projection = {}) => {
   } catch (e) {
     throw e;
   }
-}
+};
 
 /**
  * Get all user
@@ -92,7 +93,7 @@ const all = async (projection = {}) => {
   } catch (e) {
     throw e;
   }
-}
+};
 
 module.exports = {
   create,

@@ -30,7 +30,8 @@ const User = new Schema({
 
 // Optimise the class loader
 let modelClass;
-if (typeof instance === "undefined") {
+
+if (__helper.isUndefined(modelClass)) {
   modelClass = mongoose.model('User', User, 'users');
 }
 
