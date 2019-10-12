@@ -27,7 +27,8 @@ __.configure({
 });
 
 const glob = require("glob");
-const app = require('express')();
+const express = require('express')
+const app = express();
 
 // We load the request parse and init package
 const bodyParser = require('body-parser');
@@ -37,6 +38,7 @@ const morgan = require('morgan');
 const assignToRequestId = require('./middlewares/assignId');
 const helmet = require('helmet');
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 app.use(assignToRequestId);
 app.use(morgan('combined', {
