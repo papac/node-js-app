@@ -6,8 +6,8 @@ class UserController extends BaseController {
   /**
    * Show the get started message
    *
-   * @param  {Object} res
    * @param  {Object} req
+   * @param  {Object} res
    * @return {*}
    */
   index(req, res) {
