@@ -2,7 +2,7 @@
   "name": "node-js-base-app",
   "version": "1.0.0",
   "description": "Nodejs base application structure",
-  "main": "www",
+  "main": "server",
   "scripts": {
     "test": "mocha tests",
     "start": "DEBUG=app nodemon ./server",
