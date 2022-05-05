@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 // We load the controller here
-const userController = require("../controllers/userController");
-const validation = require("../validations/UserValidation");
+const userController = require("../controllers/user.controller");
+const validation = require("../validations/user.validation");
 
 // Show index
 router.get("/", userController.index);

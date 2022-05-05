@@ -1,7 +1,7 @@
 // Optimisation of configuration loader
 global.__config = require('config');
 global.__helper = require('./helpers');
-global.__logger = require('./services/loggerService');
+global.__logger = require('./services/logger.service');
 global.__ = require('i18n');
 
 // Util package
@@ -36,7 +36,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const morgan = require('morgan');
-const assignToRequestId = require('./middlewares/assignId');
+const assignToRequestId = require('./middlewares/assign-id.middleware');
 const helmet = require('helmet');
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -71,7 +71,7 @@ glob("./routes/*.js", (error, files) => {
   });
 }).on('end', () => {
   // We bind a 404 catcher
-  app.use(require('./middlewares/404.js'));
+  app.use(require('./middlewares/404.middleware.js'));
   // app.use(require('./middlewares/error.js'));
 });
 

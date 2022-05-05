@@ -1,7 +1,7 @@
 require('custom-env').env(true);
 
-let app = require('./app');
 let server;
+const app = require('../app');
 
 if (__config.withHttps) {
   const https = require('https');

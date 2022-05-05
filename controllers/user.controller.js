@@ -1,6 +1,6 @@
-const BaseController = require("./baseController");
-const User = require("../models/userModel");
-const UserService = require('../services/userService');
+const BaseController = require("./base.controller");
+const User = require("../models/user.model");
+const UserService = require('../services/user.service');
 
 class UserController extends BaseController {
   /**

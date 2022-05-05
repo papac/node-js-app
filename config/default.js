@@ -1,8 +1,8 @@
-const auth = require("./auth");
-const view = require("./view");
-const certificate = require("./certificate");
-const storage = require("./storage");
-const session = require("./session");
+const auth = require("./auth.config");
+const view = require("./view.config");
+const certificate = require("./certificate.config");
+const storage = require("./storage.config");
+const session = require("./session.config");
 
 // Prevent for update
 const config = {

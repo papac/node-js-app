@@ -5,7 +5,7 @@
   "main": "server",
   "scripts": {
     "test": "mocha tests",
-    "start": "DEBUG=app nodemon ./server",
+    "start": "DEBUG=app nodemon ./bin/server",
     "dev": "npm run development",
     "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",
