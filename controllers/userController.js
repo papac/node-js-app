@@ -11,7 +11,7 @@ class UserController extends BaseController {
    * @return {*}
    */
   index(req, res) {
-    res.render("app");
+    return res.render("app");
   }
 
   /**
@@ -22,9 +22,9 @@ class UserController extends BaseController {
    * @return {*}
    */
   async show(req, res) {
-    let { id } = req.params;
-    let user = await UserService.findOne({_id: id});
-    res.send(user);
+    const { id } = req.params;
+    const user = await UserService.findOne({_id: id});
+    return res.send(user);
   }
 
   /**
@@ -35,8 +35,8 @@ class UserController extends BaseController {
    * @return {*}
    */
   async showAll(req, res) {
-    let users = await UserService.all();
-    res.send(users);
+    const users = await UserService.all();
+    return res.send(users);
   }
 
   /**
@@ -47,8 +47,8 @@ class UserController extends BaseController {
    * @return {*}
    */
   async create(req, res) {
-    let user = await UserService.create(req.body);
-    res.send({
+    const user = await UserService.create(req.body);
+    return res.send({
       message: "User created",
       user: user
     });
@@ -62,11 +62,9 @@ class UserController extends BaseController {
    * @return {*}
    */
   async delete(req, res) {
-    let {
-      id
-    } = req.params;
+    const { id } = req.params;
     await User.remove(id);
-    res.send({
+    return res.send({
       message: 'User deleted'
     });
   }

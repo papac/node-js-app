@@ -27,7 +27,11 @@ __.configure({
 });
 
 const glob = require("glob");
-const express = require('express')
+const express = require('express');
+
+const Sentry = require("@sentry/node");
+const Tracing = require("@sentry/tracing");
+
 const app = express();
 
 // We load the request parse and init package
