@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 describe('UserController', () => {
   describe('#index()', () => {
     it('should have http code 200', () => {
-      chai.request("http://localhost:3000")
+      chai.request("http://localhost:5000")
         .get('/')
         .end((req, res) => {
           expect(res).to.have.status(200);
