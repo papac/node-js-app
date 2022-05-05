@@ -2,15 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 // We load the controller here
-const UserController = require("../controllers/userController");
-const UserValidation = require('../validations/UserValidation');
+const userController = require("../controllers/userController");
+const validation = require("../validations/UserValidation");
 
 // Show index
-router.get('/', UserController.index);
-router.post('/create', UserValidation, UserController.create);
+router.get("/", userController.index);
+router.post("/create", validation.create, userController.create);
 
-router.get('/users', UserController.showAll);
-router.get('/users/:id', UserController.show);
-router.delete('/users/:id', UserController.delete);
+router.get('/users', userController.showAll);
+router.get('/users/:id', userController.show);
+router.delete('/users/:id', userController.delete);
 
 module.exports = router;

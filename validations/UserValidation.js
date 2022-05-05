@@ -7,7 +7,7 @@ const Schema = Joi.object({
   description: Joi.string().max(500).required()
 });
 
-module.exports = (req, res, next) => {
+const create = (req, res, next) => {
   const {
     error
   } = Schema.validate(req.body);
@@ -17,4 +17,8 @@ module.exports = (req, res, next) => {
   }
 
   throw new Error('Error of user data validation: ' + error.message);
+};
+
+module.exports = {
+  create,
 };
